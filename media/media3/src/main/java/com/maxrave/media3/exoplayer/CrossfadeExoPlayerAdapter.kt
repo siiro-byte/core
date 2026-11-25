@@ -20,6 +20,7 @@ import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.exoplayer.audio.AudioSink
 import androidx.media3.exoplayer.audio.DefaultAudioSink
+import com.maxrave.media3.visualizer.VisualizerAudioSink
 import androidx.media3.exoplayer.audio.SilenceSkippingAudioProcessor
 import com.maxrave.common.MERGING_DATA_TYPE
 import com.maxrave.domain.data.player.AudioEffects
@@ -644,7 +645,7 @@ internal class CrossfadeExoPlayerAdapter(
 
                                 override fun getAudioProcessors(): Array<AudioProcessor> = processorsWithEightD
                             },
-                        ).build().let { waveformReader.playbackSink(it, mediaId) }
+                        ).build().let { VisualizerAudioSink(waveformReader.playbackSink(it, mediaId)) }
             }
 
         val player =

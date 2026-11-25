@@ -32,6 +32,7 @@ import androidx.media3.exoplayer.DefaultRenderersFactory
 import androidx.media3.exoplayer.LoadControl
 import androidx.media3.exoplayer.audio.AudioSink
 import androidx.media3.exoplayer.audio.DefaultAudioSink
+import com.maxrave.media3.visualizer.VisualizerAudioSink
 import androidx.media3.exoplayer.audio.SilenceSkippingAudioProcessor
 import androidx.media3.exoplayer.hls.HlsMediaSource
 import androidx.media3.exoplayer.source.DefaultMediaSourceFactory
@@ -525,6 +526,7 @@ private fun provideRendererFactory(context: Context): DefaultRenderersFactory =
                         SonicAudioProcessor(),
                     ),
                 ).build()
+                .let { VisualizerAudioSink(it) }
     }
 
 @UnstableApi
